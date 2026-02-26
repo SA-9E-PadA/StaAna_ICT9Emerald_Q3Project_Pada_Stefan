@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Page</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background-image: url("backing.jpg");
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#000000;
+    color:rgb(0, 157, 255);
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+}
+
+.nav-buttons a{
+    margin-left:15px;
+    padding:8px 15px;
+    background:#00b3ff;
+    color:rgb(0, 0, 0);
+    text-decoration:none;
+    border-radius:5px;
+}
+
+
+.hero{
+    display:flex;
+    justify-content:center;
+    padding:40px;
+}
+
+.registration-card{
+    display:flex;
+    background:rgb(0, 179, 255);
+    width:800px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.left-panel{
+    width:35%;
+    padding:20px;
+    text-align:center;
+    background:#000000;
+}
+
+.profile-placeholder{
+    height:150px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.right-panel{
+    width:65%;
+    padding:30px;
+}
+
+form input{
+    width:100%;
+    padding:8px;
+    margin:5px 0 15px 0;
+}
+
+.row{
+    display:flex;
+    gap:15px;
+}
+
+.row div{
+    width:50%;
+}
+
+button{
+    padding:10px 15px;
+    background:#00b3ff;
+    color:rgb(0, 0, 0);
+    border:none;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#222;
+    color:rgb(0, 0, 0);
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">LOGO</div>
+    <ul class="nav-links">
+        <li><a href="#" onclick="navAlert('Home')">Home</a></li>
+        <li><a href="#" onclick="navAlert('Fare Matrix')">Fare Matrix</a></li>
+        <li><a href="#" onclick="navAlert('Schedule')">Schedule</a></li>
+        <li><a href="#" onclick="navAlert('Help')">Help</a></li>
+    </ul>
+    <div class="nav-buttons">
+        <a href="#" onclick="navAlert('Book Now')">Book Now</a>
+        <a href="#" onclick="navAlert('Create Account')">Create Account</a>
+    </div>
+</nav>
+
+<section class="hero">
+
+<div class="registration-card">
+
+    <div class="left-panel">
+        <div class="profile-placeholder" id="profileBox">
+            Profile Image
+        </div>
+        <input type="file" id="photoInput">
+        <button onclick="uploadPhoto()">Upload Photo</button>
+    </div>
+
+    <div class="right-panel p-1">
+        <h1>REGISTRATION</h1>
+
+        <p>Please fill out all required fields.</p>
+
+        <form onsubmit="return validateForm()">
+
+            <label>First Name</label>
+            <input type="text" id="fname">
+
+            <label>Last Name</label>
+            <input type="text" id="lname">
+
+            <div class="row">
+                <div>
+                    <label>Age</label>
+                    <input type="number" id="age">
+                </div>
+                <div>
+                    <label>Contact Number</label>
+                    <input type="text" id="contact">
+                </div>
+            </div>
+
+            <label>Email</label>
+            <input type="email" id="email">
+
+            <label>Username</label>
+            <input type="text" id="username">
+
+            <label>Password</label>
+            <input type="password" id="password">
+
+            <div>
+                <input type="checkbox" id="terms">
+                I accept the Terms
+            </div>
+
+            <button type="submit">Create my account</button>
+
+        </form>
+    </div>
+
+</div>
+
+</section>
+
+<footer>
+Travis Alipio And Stefan Pada | 9-Emerald ©2026
+</footer>
+
+<script>
+function navAlert(page){
+    alert("You clicked " + page);
+}
+
+function uploadPhoto(){
+    let input = document.getElementById("photoInput");
+    let box = document.getElementById("profileBox");
+
+    if(input.files.length > 0){
+        box.innerHTML = input.files[0].name;
+    } else {
+        alert("Please select a file first.");
+    }
+}
+
+function validateForm(){
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;
+    let age = document.getElementById("age").value;
+    let terms = document.getElementById("terms").checked;
+
+    if(fname === "" || lname === "" || age === ""){
+        alert("Please fill out all required fields.");
+        return false;
+    }
+
+    if(!terms){
+        alert("You must accept the Terms.");
+        return false;
+    }
+
+    alert("Account Successfully Created!");
+    return false; // prevents page refresh
+}
+</script>
+
+</body>
+</html>
