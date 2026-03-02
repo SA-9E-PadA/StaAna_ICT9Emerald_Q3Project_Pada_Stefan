@@ -1,1 +1,3 @@
-# StaAna_ICT9Emerald_Q3Project_Pada_Stefan
+# SmartFate
+
+Developed by: Stefan Pada and Travis Alipio
